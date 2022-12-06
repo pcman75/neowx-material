@@ -2,3 +2,7 @@
 /src/node_modules/
 /dist/skins/neowx-material/
 /dist/*.zip
+src/.yarn
+src/.yarnrc.yml
+*.zip
+ 

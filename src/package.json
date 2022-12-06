@@ -7,7 +7,7 @@
   "author": "Neoground GmbH",
   "license": "MIT",
   "dependencies": {
-    "node-sass": "^5.0.0"
+    "node-sass": "^8.0.0"
   },
   "scripts": {
     "build-css": "node-sass --include-path scss scss/style.scss css/style.css",
@@ -17,6 +17,8 @@
     "delete-build": "rm -Rf ../dist/skins/neowx-material/",
     "cleanup-build": "rm -Rf ../dist/skins/neowx-material/img/*.psd ../dist/skins/neowx-material/js/*.map ../dist/skins/neowx-material/css/style.css",
     "build": "yarn run build-minify-css && yarn run delete-build && yarn run copy-directories && yarn run copy-files && yarn run cleanup-build",
-    "create-zip": "cd .. && zip -r neowx-material-latest.zip dist && cd src"
+    "create-zip": "cd .. && zip -r neowx-material-latest.zip dist && cd src",
+    "switch-dev": "sudo mv /etc/weewx/skins/neowx-material/ /etc/weewx/skins/neowx-material-bak && sudo ln -s /home/weather/neowx-material/src /etc/weewx/skins/neowx-material",
+    "switch-prod": "sudo unlink /etc/weewx/skins/neowx-material && sudo mv /etc/weewx/skins/neowx-material-bak /etc/weewx/skins/neowx-material"
   }
 }
