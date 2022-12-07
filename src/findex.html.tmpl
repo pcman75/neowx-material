@@ -1,0 +1,42 @@
+#encoding UTF-8
+## +-------------------------------------------------------------------------+
+## | The main page layout                                                    |
+## +-------------------------------------------------------------------------+
+
+<!DOCTYPE html>
+<html lang="$Extras.language">
+<head>
+  <title>
+    $Extras.Translations[$Extras.language].current | $station.location
+  </title>
+</head>
+<body class="${Extras.Appearance.mode}-theme main-bg" ontouchstart="">
+
+#if $varExists('forecast')
+ 
+  <h1>Zambretti</h1>
+  <p>
+    #if $varExists('forecast.zambretti')
+    The forecast is $forecast.label('Zambretti', $forecast.zambretti.code) code = $forecast.zambretti.code<br/>
+    <span class='issued'>Issued at $forecast.zambretti.issued_ts</span>
+    $forecast.zambretti
+    #else
+    The Zambretti forecast is not enabled.
+    #end if
+  </p>
+
+  <h1>WU</h1>
+  <p>
+    $forecast.weather_summary('WU')
+    $forecast.weather_periods('WU')
+    
+  </p>
+
+#else
+
+<p>The forecast search list extension is not installed.</p>
+
+#end if
+
+</body>
+</html>

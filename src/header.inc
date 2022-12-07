@@ -11,12 +11,17 @@
                 #if $Extras.Header.custom_logo_url != ""
                 <img src="$Extras.Header.custom_logo_url" style="width: 4rem">
                 #else
-                <img src="img/icon-alpha-1x.png" srcset="img/icon-alpha-1x.png 1x, img/icon-alpha-2x.png 2x" style="width: 4rem">
+                #set $zicon = {'A':'32.png','B':'32.png','C':'32.png','D':'32.png','E':'37.png','F':'37.png','G':'37.png','H':'37.png','I':'9.png','J':'28.png','K':'9.png','L':'9.png','M':'9.png','N':'9.png','O':'9.png','P':'9.png','Q':'40.png','R':'40.png','S':'40.png','T':'40.png','U':'40.png','V':'40.png','W':'40.png','X':'40.png','Y':'3.png','Z':'3.png'}
+                <img src="img/zambretti/$zicon[$forecast.zambretti.code]" style="width: 4rem">
                 #end if
             </a>
             #end if
             <span>
-                <strong>$station.location</strong><br>
+                #if $varExists('forecast') and $varExists('forecast.zambretti')
+                    $forecast.label('Zambretti', $forecast.zambretti.code)<span class="font-small"> - $forecast.zambretti.issued_ts</span><br> 
+                #else
+                    <strong>$station.location</strong><br>
+                #end if
                 <span class="font-small">$current.dateTime</span>
             </span>
         </span>

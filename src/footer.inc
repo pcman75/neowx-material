@@ -26,6 +26,10 @@
                         <td>$Extras.Translations[$Extras.language].altitude:</td>
                         <td>$station.altitude</td>
                     </tr>
+                    <tr>
+                        <td>Zambretti forecast: </td>
+                        <td>$forecast.zambretti.issued_ts</td>
+                    </tr>
                     #if $Extras.Footer.show_telemetry == "yes"
                     <tr>
                         <td>
