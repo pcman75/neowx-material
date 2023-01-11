@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "copy-files",
+			"path": "src",
+			"problemMatcher": [],
+			"label": "npm: copy-files - src",
+			"detail": "rsync -avh *.tmpl *.inc manifest.json skin.conf ../dist/skins/neowx-material/"
+		}
+	]
+}
