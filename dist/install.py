@@ -46,6 +46,7 @@ class BasicInstaller(ExtensionInstaller):
                     'skins/neowx-material/archive/NOAA-%Y-%m.txt.tmpl',
                     'skins/neowx-material/css/bootstrap.min.css',
                     'skins/neowx-material/css/style.min.css',
+                    'skins/neowx-material/data/temperature.json.tmpl',
                     'skins/neowx-material/fonts/OFL.txt',
                     'skins/neowx-material/fonts/Rubik-Light.eot',
                     'skins/neowx-material/fonts/Rubik-Light.woff',
