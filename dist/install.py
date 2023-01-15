@@ -20,7 +20,9 @@ class BasicInstaller(ExtensionInstaller):
                     }
                 }
             },
-            files=[('skins/neowx-material',
+            files=[('bin/user',
+                    ['bin/user/meteomatics.py']),
+                   ('skins/neowx-material',
                     ['skins/neowx-material/almanac.html.tmpl',
                     'skins/neowx-material/archive.html.tmpl',
                     'skins/neowx-material/footer.inc',

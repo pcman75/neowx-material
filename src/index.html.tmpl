@@ -142,6 +142,25 @@
 #attr $active_nav = 'current'
 #include "header.inc"
 
+## <table>
+##     ## <tr>
+##     ##     <td>Maximum temperature over the last seven days:</td>
+##     ##     <td>$seven_day.outTemp.max</td>
+##     ## </tr>
+##     ## <tr>
+##     ##     <td>Minimum temperature over the last seven days:</td>
+##     ##     <td>$seven_day.outTemp.min</td>
+##     ## </tr>
+##     ## <tr>
+##     ##     <td>Rain over the last seven days:</td>
+##     ##     <td>$seven_day.rain.sum</td>
+##     ## </tr>
+##      <tr>
+##         <td>Generator </td>
+##         <td>$hello</td>
+##     </tr>
+## </table>
+
 <main>
   <div class="container-fluid d-flex-xxl">
 
@@ -285,7 +304,25 @@ new ApexCharts(document.querySelector('#$id'), {
   }
 
   // outTemp + Dewpoint
-  $getChartJsCode("outTemp", "outTempchart", "area", "outTemp", "dewpoint")
+  let outTempChart = new ApexCharts(document.querySelector('#outTempchart'), {
+  ...graph_area_config,
+  yaxis: {
+    labels: {
+      formatter: function (val) {
+        return formatNumber(val, "%.1f") + "°C";
+      }
+    }
+  },
+  series: []
+}
+)
+outTempChart.render()
+
+fetch('data/temperature.json')
+  .then(response => response.json())
+  .then(data => {
+    outTempChart.updateSeries(data);
+  });
 
   // Wind chill + Heat index + optional appTemp
   #if "appTemp" in $Extras.Appearance.charts_order and $day.appTemp.has_data
