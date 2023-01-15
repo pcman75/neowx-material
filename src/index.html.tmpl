@@ -142,25 +142,6 @@
 #attr $active_nav = 'current'
 #include "header.inc"
 
-## <table>
-##     ## <tr>
-##     ##     <td>Maximum temperature over the last seven days:</td>
-##     ##     <td>$seven_day.outTemp.max</td>
-##     ## </tr>
-##     ## <tr>
-##     ##     <td>Minimum temperature over the last seven days:</td>
-##     ##     <td>$seven_day.outTemp.min</td>
-##     ## </tr>
-##     ## <tr>
-##     ##     <td>Rain over the last seven days:</td>
-##     ##     <td>$seven_day.rain.sum</td>
-##     ## </tr>
-##      <tr>
-##         <td>Generator </td>
-##         <td>$hello</td>
-##     </tr>
-## </table>
-
 <main>
   <div class="container-fluid d-flex-xxl">
 
@@ -246,7 +227,7 @@
 ## Only add JS chart code if in array
 #if $name in $Extras.Appearance.charts_order
 
-new ApexCharts(document.querySelector('#$id'), {
+let chart_$name = new ApexCharts(document.querySelector('#$id'), {
   ...graph_${type}_config,
   yaxis: {
     labels: {
@@ -279,7 +260,8 @@ new ApexCharts(document.querySelector('#$id'), {
     }
     #end if
   ]
-}).render()
+});
+chart_$name ['render']();
 
 #end if
 
@@ -303,25 +285,13 @@ new ApexCharts(document.querySelector('#$id'), {
     #include "graph_radar_config.inc"
   }
 
+  
   // outTemp + Dewpoint
-  let outTempChart = new ApexCharts(document.querySelector('#outTempchart'), {
-  ...graph_area_config,
-  yaxis: {
-    labels: {
-      formatter: function (val) {
-        return formatNumber(val, "%.1f") + "°C";
-      }
-    }
-  },
-  series: []
-}
-)
-outTempChart.render()
-
-fetch('data/temperature.json')
+  $getChartJsCode("outTemp", "outTempchart", "area", "outTemp", "dewpoint")
+  fetch('data/temperature.json')
   .then(response => response.json())
   .then(data => {
-    outTempChart.updateSeries(data);
+    chart_outTemp.appendSeries(data.t_2m_C);
   });
 
   // Wind chill + Heat index + optional appTemp
