@@ -355,6 +355,7 @@ chart_$name ['render']();
       data['precip_1h:mm'].data[index][1] = value[1] / 10;
     });
     chart_rain.appendSeries(data['precip_1h:mm']);
+    chart_barometer.appendSeries(data['msl_pressure:hPa']);
   });
 
   // Build wind vector chart
