@@ -350,8 +350,11 @@ chart_$name ['render']();
   fetch('data/temperature.json')
   .then(response => response.json())
   .then(data => {
-    chart_outTemp.appendSeries(data.t_2m_C);
-    chart_rain.appendSeries(data.precip_1h_mm);
+    chart_outTemp.appendSeries(data['t_2m:C']);
+    data['precip_1h:mm'].data.forEach((value, index) => {
+      data['precip_1h:mm'].data[index][1] = value[1] / 10;
+    });
+    chart_rain.appendSeries(data['precip_1h:mm']);
   });
 
   // Build wind vector chart
