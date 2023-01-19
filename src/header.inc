@@ -18,7 +18,8 @@
             #end if
             <span>
                 #if $varExists('forecast') and $varExists('forecast.zambretti')
-                    $forecast.label('Zambretti', $forecast.zambretti.code)<br> 
+                <span class='forecast_text'>$forecast.label('Zambretti', $forecast.zambretti.code)</span>
+                <br> 
                 #else
                     <strong>$station.location</strong><br>
                 #end if

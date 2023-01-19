@@ -391,6 +391,25 @@ chart_$name ['render']();
   $getChartJsCode("cloudbase", "cloudbasechart", "area", "cloudbase", "avg")
   #end if
 
+  let weather_symbol_text = [
+    'A weather code could not be determined',
+    'Clear sky',
+    'Light clouds',
+    'Partly cloudy',
+    'Cloudy',
+    'Rain',
+    'Rain and snow / sleet',
+    'Snow',
+    'Rain shower',
+    'Snow shower',
+    'Sleet shower',
+    'Light Fog',
+    'Dense fog',
+    'Freezing rain',
+    'Thunderstorms',
+    'Drizzle',
+    'Sandstorm'
+  ]
   //Forecast
   fetch('data/temperature.json')
     .then(response => response.json())
@@ -409,6 +428,12 @@ chart_$name ['render']();
           let symbol = data['weather_symbol_1h:idx'].data[index][1]
           hourElements[index - 1].children[1].src = 'img/wsymbol/wsymbol_' + symbol.toString().padStart(4, '0') + '.png'
           hourElements[index - 1].children[2].innerHTML = value[1].toString() + '°C';
+          if(index == 1){
+            document.querySelector('body > header > nav > span > a > img').src = 'img/wsymbol/wsymbol_' + symbol.toString().padStart(4, '0') + '.png'
+            let symbol_text_idx = symbol > 100? symbol - 100: symbol
+            let weather_text = weather_symbol_text[symbol_text_idx]
+            document.querySelector('body > header > nav > span > span > span.forecast_text').innerHTML = weather_text
+          }
         }
       })
     });
