@@ -146,48 +146,51 @@
   <div class="container-fluid d-flex-xxl">
 
     <div class="row my-4 temprow align-content-start">
-      <div class="col-12 col-md-6 col-xl-4 mb-4">
-            <div class="card">
-              <div class="card-body text-center">
-                <h3 class="h5-responsive light-blue-text text-center">Forecast</h3>
-                <div class="row text-muted font-small lo-text">
-                  <div class="col-2 px-1 text-center font-small lo-text">
-                    <div>03</div>
-                    <img src="img/wsymbol/wsymbol_0001.png" class="img-fluid">
-                    <div>10°C</div>
-                  </div>
-                  <div class="col-2 px-1 text-center font-small lo-text">
-                    <div>04</div>
-                    <img src="img/wsymbol/wsymbol_0002.png" class="img-fluid">
-                    <div>12°C</div>
-                  </div>
-                  <div class="col-2 px-1 text-center font-small lo-text">
-                    <div>05</div>
-                    <img src="img/wsymbol/wsymbol_0002.png" class="img-fluid">
-                    <div>12°C</div>
-                  </div>
-                  <div class="col-2 px-1 text-center font-small lo-text">
-                    <div>06</div>
-                    <img src="img/wsymbol/wsymbol_0002.png" class="img-fluid">
-                    <div>12°C</div>
-                  </div>
-                  <div class="col-2 px-1 text-center font-small lo-text">
-                    <div>07</div>
-                    <img src="img/wsymbol/wsymbol_0002.png" class="img-fluid">
-                    <div>12°C</div>
-                  </div>
-                  <div class="col-2 px-1 text-center font-small lo-text">
-                    <div>08</div>
-                    <img src="img/wsymbol/wsymbol_0002.png" class="img-fluid">
-                    <div>12°C</div>
-                  </div>
-
+    <div class="col-12 col-md-6 col-xl-4 mb-4">
+          <div class="card forecast">
+            <div class="card-body text-center">
+              <h3 class="h5-responsive light-blue-text text-center">Forecast</h3>
+              <div class="row text-muted font-small lo-text">
+                <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
+                  <div class=".hour">00</div>
+                  <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+                  <div>0°C</div>
                 </div>
+                <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
+                  <div class=".hour">00</div>
+                  <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+                  <div>0°C</div>
+                </div>
+                <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
+                  <div class=".hour">00</div>
+                  <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+                  <div>0°C</div>
+                </div>
+                <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
+                  <div class=".hour">00</div>
+                  <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+                  <div>0°C</div>
+                </div>
+                <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
+                  <div class=".hour">00</div>
+                  <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+                  <div>0°C</div>
+                </div>
+                <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
+                  <div class=".hour">00</div>
+                  <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+                  <div>0°C</div>
+                </div>
+
               </div>
             </div>
-
-
           </div>
+
+
+        </div>  
+
+
+    
       #for $x in $Extras.Appearance.values_order
 
       #if $x == "ET"
@@ -390,15 +393,25 @@ chart_$name ['render']();
 
   //Forecast
   fetch('data/temperature.json')
-  .then(response => response.json())
-  .then(data => {
-    chart_outTemp.appendSeries(data['t_2m:C']);
-    data['precip_1h:mm'].data.forEach((value, index) => {
-      data['precip_1h:mm'].data[index][1] = value[1] / 10;
+    .then(response => response.json())
+    .then(data => {
+      chart_outTemp.appendSeries(data['t_2m:C']);
+      data['precip_1h:mm'].data.forEach((value, index) => {
+        data['precip_1h:mm'].data[index][1] = value[1] / 10;
+      });
+      chart_rain.appendSeries(data['precip_1h:mm']);
+      chart_barometer.appendSeries(data['msl_pressure:hPa']);
+
+      let hourElements = document.querySelectorAll('.hour_forecast');
+      data['t_2m:C'].data.forEach((value, index) => {
+        if(index < 6){
+          hourElements[index].children[0].innerHTML = (new Date(value[0] * 1000)).getHours();
+          let symbol = data['weather_symbol_1h:idx'].data[index][1]
+          hourElements[index].children[1].src = `img/wsymbol/wsymbol_${String(symbol).padStart(4, "0")}.png`
+          hourElements[index].children[2].innerHTML = value[1].toString() + '°C';
+        }
+      })
     });
-    chart_rain.appendSeries(data['precip_1h:mm']);
-    chart_barometer.appendSeries(data['msl_pressure:hPa']);
-  });
 
   // Build wind vector chart
   var vector_data = {
