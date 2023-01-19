@@ -404,11 +404,11 @@ chart_$name ['render']();
 
       let hourElements = document.querySelectorAll('.hour_forecast');
       data['t_2m:C'].data.forEach((value, index) => {
-        if(index < 6){
-          hourElements[index].children[0].innerHTML = (new Date(value[0] * 1000)).getHours();
+        if(index > 0 && index < 7){
+          hourElements[index - 1].children[0].innerHTML = (new Date(value[0] * 1000)).getHours();
           let symbol = data['weather_symbol_1h:idx'].data[index][1]
-          hourElements[index].children[1].src = `img/wsymbol/wsymbol_${String(symbol).padStart(4, "0")}.png`
-          hourElements[index].children[2].innerHTML = value[1].toString() + '°C';
+          hourElements[index - 1].children[1].src = 'img/wsymbol/wsymbol_' + symbol.toString().padStart(4, '0') + '.png'
+          hourElements[index - 1].children[2].innerHTML = value[1].toString() + '°C';
         }
       })
     });
