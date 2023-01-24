@@ -147,47 +147,84 @@
 
     <div class="row my-4 temprow align-content-start">
     <div class="col-12 col-md-6 col-xl-4 mb-4">
-          <div class="card forecast">
-            <div class="card-body text-center">
-              <h3 class="h5-responsive light-blue-text text-center">Forecast</h3>
-              <div class="row text-muted font-small lo-text">
-                <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
-                  <div class=".hour">00</div>
-                  <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
-                  <div>0°C</div>
-                </div>
-                <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
-                  <div class=".hour">00</div>
-                  <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
-                  <div>0°C</div>
-                </div>
-                <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
-                  <div class=".hour">00</div>
-                  <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
-                  <div>0°C</div>
-                </div>
-                <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
-                  <div class=".hour">00</div>
-                  <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
-                  <div>0°C</div>
-                </div>
-                <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
-                  <div class=".hour">00</div>
-                  <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
-                  <div>0°C</div>
-                </div>
-                <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
-                  <div class=".hour">00</div>
-                  <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
-                  <div>0°C</div>
-                </div>
+      <div class="card forecast">
+        <div class="card-body text-center">
+          <h3 class="h5-responsive light-blue-text text-center">Hourly Forecast</h3>
+          <div class="row text-muted font-small lo-text">
+            <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
+              <div class=".hour">00</div>
+              <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+              <div>0°C</div>
+            </div>
+            <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
+              <div class=".hour">00</div>
+              <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+              <div>0°C</div>
+            </div>
+            <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
+              <div class=".hour">00</div>
+              <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+              <div>0°C</div>
+            </div>
+            <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
+              <div class=".hour">00</div>
+              <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+              <div>0°C</div>
+            </div>
+            <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
+              <div class=".hour">00</div>
+              <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+              <div>0°C</div>
+            </div>
+            <div class="col-2 px-1 text-center font-small lo-text hour_forecast">
+              <div class=".hour">00</div>
+              <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+              <div>0°C</div>
+            </div>
 
-              </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+    <div class="col-12 col-md-6 col-xl-4 mb-4">
+      <div class="card forecast">
+        <div class="card-body text-center">
+          <h3 class="h5-responsive light-blue-text text-center">Daily Forecast</h3>
+          <div class="row text-muted font-small lo-text">
+            <div class="col-2 px-1 text-center font-small lo-text day_forecast">
+              <div class="day">Sunday</div>
+              <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+              <div>0° 7°</div>
+            </div>
+            <div class="col-2 px-1 text-center font-small lo-text day_forecast">
+              <div class="day">Sunday</div>
+              <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+              <div>0° 7°</div>
+            </div>
+            <div class="col-2 px-1 text-center font-small lo-text day_forecast">
+              <div class="day">Sunday</div>
+              <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+              <div>0° 7°</div>
+            </div>
+            <div class="col-2 px-1 text-center font-small lo-text day_forecast">
+              <div class="day">Sunday</div>
+              <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+              <div>0° 7°</div>
+            </div>
+            <div class="col-2 px-1 text-center font-small lo-text day_forecast">
+              <div class="day">Sunday</div>
+              <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+              <div>0° 7°</div>
+            </div>
+            <div class="col-2 px-1 text-center font-small lo-text day_forecast">
+              <div class="day">Sunday</div>
+              <img src="img/wsymbol/wsymbol_0000.png" class="img-fluid">
+              <div>0° 7°</div>
             </div>
           </div>
-
-
-        </div>  
+        </div>
+      </div>
+    </div>  
 
 
     
@@ -410,6 +447,7 @@ chart_$name ['render']();
     'Drizzle',
     'Sandstorm'
   ]
+  let dayName = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
   //Forecast
   fetch('data/temperature.json')
     .then(response => response.json())
@@ -427,13 +465,23 @@ chart_$name ['render']();
           hourElements[index - 1].children[0].innerHTML = (new Date(value[0] * 1000)).getHours();
           let symbol = data['weather_symbol_1h:idx'].data[index][1]
           hourElements[index - 1].children[1].src = 'img/wsymbol/wsymbol_' + symbol.toString().padStart(4, '0') + '.png'
-          hourElements[index - 1].children[2].innerHTML = value[1].toString() + '°C';
+          hourElements[index - 1].children[2].innerHTML = Math.round(value[1]).toString() + '°C';
           if(index == 1){
             document.querySelector('body > header > nav > span > a > img').src = 'img/wsymbol/wsymbol_' + symbol.toString().padStart(4, '0') + '.png'
             let symbol_text_idx = symbol > 100? symbol - 100: symbol
             let weather_text = weather_symbol_text[symbol_text_idx]
             document.querySelector('body > header > nav > span > span > span.forecast_text').innerHTML = weather_text
           }
+        }
+      })
+      let dayElements = document.querySelectorAll('.day_forecast');
+      data['maxTemp'].data.forEach((value, index) => {
+        if(index < 6){
+          dayElements[index].children[0].innerHTML = dayName[(new Date(value[0] * 1000)).getDay()];
+          let symbol = data['wsymbol'].data[index][1]
+          if(symbol)
+            dayElements[index].children[1].src = 'img/wsymbol/wsymbol_' + symbol.toString().padStart(4, '0') + '.png'
+          dayElements[index].children[2].innerHTML = Math.round(data['minTemp'].data[index][1]).toString() + '°C ' + Math.round(value[1]).toString() + '°C';
         }
       })
     });
